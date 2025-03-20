@@ -1,20 +1,19 @@
-package ProgramacionIII.tp1;
 
-public class MySimpleLinkedList<T> {
+public class MySimpleLinkedList<Integer> {
 	
-	private Node<T> first;
+	private Node<Integer> first;
 	
 	public MySimpleLinkedList() {
 		this.first = null;
 	}
 	
-	public void insertFront(T info) {
-		Node<T> tmp = new Node<T>(info,null);
+	public void insertFront(Integer info) {
+		Node<Integer> tmp = new Node<Integer>(info,null);
 		tmp.setNext(this.first);
 		this.first = tmp;
 	}
 	
-	public T extractFront() {		
+	public Integer extractFront() {		
 		// TODO
 		return null;
 	}
@@ -24,7 +23,7 @@ public class MySimpleLinkedList<T> {
 		return false;
 	}
 	
-	public T get(int index) {
+	public Integer get(int index) {
 		// TODO
 		return null;
 	}
