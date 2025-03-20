@@ -1,33 +1,43 @@
 
-public class Node<Integer> {
+public class Node<T> {
 
-	private Integer info;
-	private Node<Integer> next;
+	private T info;
+	private Node<T> next;
 
 	public Node() {
 		this.info = null;
 		this.next = null;
 	}
 	
-	public Node(Integer info, Node<Integer> next) {
+	public Node(T info, Node<T> next) {
 		this.setInfo(info);
 		this.setNext(next);
 	}
 	
-	public Node<Integer> getNext() {
+	public Node<T> getNext() {
 		return next;
 	}
 
-	public void setNext(Node<Integer> next) {
+	public void setNext(Node<T> next) {
 		this.next = next;
 	}
 
-	public Integer getInfo() {
+	public T getInfo() {
 		return this.info;
 	}
 
-	public void setInfo(Integer info) {
+	public void setInfo(T info) {
 		this.info = info;
+	}
+
+	@Override
+	public boolean equals(Object obj){
+		try {
+			T other=(T) obj;
+			return this.getInfo().equals(other);
+		}catch (Exception e){
+			return false;
+		}
 	}
 
 }
