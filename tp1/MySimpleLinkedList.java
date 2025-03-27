@@ -1,5 +1,6 @@
+import java.util.Iterator;
 
-public class MySimpleLinkedList<T> {
+public class MySimpleLinkedList<T extends Comparable<T>>  implements Iterable<T> {
 	
 	private Node<T> first;
 	private int size;
@@ -43,9 +44,9 @@ public class MySimpleLinkedList<T> {
 		return null;
 	}
 
-	public int getPorInfo(T info){
+	public int getPorInfo(Integer info){
 		int retorno=-1;
-		if (info!=null){
+		if (info!=null && size!=0){
 			Node<T> tmp=first;
 			int ini=1;
 			while(tmp.getInfo()!=info && ini<size){
@@ -113,5 +114,32 @@ public class MySimpleLinkedList<T> {
 		}
 		return null;
 	}
-	
+
+	public Iterator<T> iterator(){
+		return new MyIterable<T>(first);
+	}
+
+	public void insertOrdened(T info){
+		Node<T> insert=new Node<>(info,null);
+		if (this.first==null)
+			this.first=insert;
+		else{
+			if (this.first.getInfo().compareTo(info)>=0){
+				insert.setNext(first);
+				this.first=insert;
+			}else{
+				Node<T> tmp=this.first;
+				Node<T> anterior=null;
+				while (tmp != null && tmp.getInfo().compareTo(insert.getInfo()) < 0) {
+					anterior=tmp;
+					tmp=tmp.getNext();
+				}
+				if (tmp!=null)
+					insert.setNext(tmp);
+				anterior.setNext(insert);
+			}
+		}
+		size++;
+	}
+
 }

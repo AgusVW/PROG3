@@ -33,11 +33,12 @@ public class Node<T> {
 	@Override
 	public boolean equals(Object obj){
 		try {
-			T other=(T) obj;
+			Integer other=(Integer) obj;
 			return this.getInfo().equals(other);
 		}catch (Exception e){
 			return false;
 		}
 	}
+
 
 }
