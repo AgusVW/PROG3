@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class GrafoDirigido<T> implements Grafo<T> {
+public class GrafoDirigido<T> implements Grafo<T>, Iterable<Integer> {
 	private HashMap<Integer,LinkedList<Arco<T>>> vertices;
 
 	public GrafoDirigido(){
@@ -122,6 +122,11 @@ public class GrafoDirigido<T> implements Grafo<T> {
 			return this.vertices.get(verticeId).iterator();
 		}
 		return null;
+	}
+
+	@Override
+	public Iterator<Integer> iterator() {
+		return this.vertices.keySet().iterator();
 	}
 
 }
