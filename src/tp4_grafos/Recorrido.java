@@ -2,9 +2,10 @@ package tp4_grafos;
 import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Iterator;
 
 
-public class Recorrido {
+public class Recorrido implements Iterable<Integer>{
     private HashMap<Integer,String> verticesRecorridos;
     private LinkedList<Integer> fila;
 
@@ -60,8 +61,57 @@ public class Recorrido {
     }
 
     private void BFS(GrafoDirigido<Integer> g,int vertice){
-        
+        verticesRecorridos.put(vertice,"VISITADO");//marco el vertice actual visitado
+        fila.add(vertice);//agrego a la fila el primer vertice
+        while(!fila.isEmpty()){//mientras la fila no quede vacia no paro
+            int verticeActual=fila.removeFirst();//remuevo el primero de la fila a recorrer de los adyacentes
+            System.out.println(verticeActual);//imprimo el vertice cuando lo saco de la fila
+            Iterator<Integer> adyacentes=g.obtenerAdyacentes(verticeActual);//traigo los adyacentes
+            while(adyacentes.hasNext()){
+                int adyacenteActual=adyacentes.next();
+                if(verticesRecorridos.get(adyacenteActual).equals("NO VISITADO")){
+                    verticesRecorridos.put(adyacenteActual,"VISITADO");//marco el adyacente como visitado
+                    fila.add(adyacenteActual);//lo agrego a la fila para luego recorrer sus adyacentes desde la fila
+                }
+            }
+        }
     }
 
+    public boolean hayCiclo(GrafoDirigido<Integer> g){
+        verticesRecorridos.clear();
+        for(Integer v:g){//agrego los vertices a mi verticesRecorridos
+            verticesRecorridos.put(v,"BLANCO");
+        }
 
+        for(Integer vertice:Recorrido.this){
+            boolean hayCiclo=false;//guardo el hay ciclo en variable pq nose si voy a tener que recorrer todos los vertices separados o no
+            if(verticesRecorridos.get(vertice).equals("BLANCO")){
+                hayCiclo=buscarCiclo(g,vertice);
+            }
+            if(hayCiclo)//si hayciclo se vuelve true ya lo retorno
+                return true;
+        }
+        return false;//si en ningun momento se volvio true quiere decir que es false
+    }
+
+    private boolean buscarCiclo(GrafoDirigido<Integer> g,int vertice){
+        verticesRecorridos.put(vertice,"AMARILLO");
+        Iterator<Integer> adyacentes=g.obtenerAdyacentes(vertice);
+        while(adyacentes.hasNext()){
+            int actual=adyacentes.next();
+            if(verticesRecorridos.get(actual).equals("BLANCO")){
+                return buscarCiclo(g,actual);
+            }
+            else if(verticesRecorridos.get(actual).equals("AMARILLO")){//si es amarillo quiere decir que es un ancestro mio,ya que todavia no se puso en color negro
+                return true;
+            }
+        }
+        verticesRecorridos.put(vertice,"NEGRO");
+        return false;
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {//iterable para mis hash de la clase
+        return this.verticesRecorridos.keySet().iterator();
+    }
 }

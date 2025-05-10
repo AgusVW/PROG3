@@ -1,0 +1,53 @@
+🧭 HashMap<K, V> – Métodos principale
+Método | Descripción
+put(K key, V value) | Agrega o reemplaza un valor asociado a una clave.
+get(Object key) | Devuelve el valor asociado a la clave, o null si no existe.
+remove(Object key) | Elimina la entrada con esa clave.
+containsKey(Object key) | Devuelve true si la clave existe en el mapa.
+containsValue(Object value) | Devuelve true si hay al menos un valor igual al especificado.
+isEmpty() | Devuelve true si el mapa está vacío.
+size() | Devuelve la cantidad de elementos (pares clave-valor).
+clear() | Elimina todas las entradas del mapa.
+putIfAbsent(K key, V value) | Solo agrega el valor si la clave no está presente.
+replace(K key, V value) | Reemplaza el valor de una clave solo si ya existe.
+keySet() | Devuelve un Set<K> con todas las claves.
+values() | Devuelve una Collection<V> con todos los valores.
+entrySet() | Devuelve un Set<Map.Entry<K,V>> con todas las entradas del mapa.
+getOrDefault(K key, V def) | Devuelve el valor de la clave, o el valor por defecto si no existe.
+merge(K key, V val, remap) | Combina valores de forma condicional con una función (desde Java 8).
+computeIfAbsent(K, f) | Si la clave no existe, calcula y guarda un valor con una función.
+computeIfPresent(K, f) | Si la clave existe, actualiza su valor con una función.
+compute(K, f) | Reemplaza o elimina el valor asociado a la clave con una función.
+
+
+
+
+🔗 LinkedList<E> – Métodos principales
+Método | Descripción
+add(E e) | Agrega un elemento al final.
+add(int index, E e) | Inserta en la posición indicada.
+addFirst(E e) | Agrega al inicio de la lista.
+addLast(E e) | Agrega al final (igual que add).
+get(int index) | Devuelve el elemento en la posición dada.
+getFirst() | Devuelve el primer elemento.
+getLast() | Devuelve el último elemento.
+remove() | Elimina el primer elemento.
+remove(int index) | Elimina el elemento en la posición dada.
+remove(Object o) | Elimina la primera aparición de un objeto.
+removeFirst() | Elimina y devuelve el primero.
+removeLast() | Elimina y devuelve el último.
+contains(Object o) | Devuelve true si el elemento existe.
+indexOf(Object o) | Devuelve el índice de la primera aparición.
+lastIndexOf(Object o) | Devuelve el índice de la última aparición.
+isEmpty() | Devuelve true si la lista está vacía.
+size() | Devuelve la cantidad de elementos.
+clear() | Borra todos los elementos.
+set(int index, E e) | Reemplaza el elemento en la posición dada.
+peek() / peekFirst() | Devuelve el primero sin eliminarlo.
+peekLast() | Devuelve el último sin eliminarlo.
+poll() / pollFirst() | Devuelve y elimina el primero.
+pollLast() | Devuelve y elimina el último.
+push(E e) | Agrega al principio (como pila).
+pop() | Elimina y devuelve el primero (como pila).
+toArray() | Convierte la lista en un array.
+iterator() | Devuelve un iterador para recorrer la lista.
