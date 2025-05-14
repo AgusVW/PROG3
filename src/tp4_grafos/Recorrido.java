@@ -1,5 +1,6 @@
 package tp4_grafos;
 import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Iterator;
@@ -8,10 +9,12 @@ import java.util.Iterator;
 public class Recorrido implements Iterable<Integer>{
     private HashMap<Integer,String> verticesRecorridos;
     private LinkedList<Integer> fila;
+    private ArrayList<Integer> caminoMasLargo;
 
     public Recorrido(){
         this.verticesRecorridos=new HashMap<>();
         this.fila=new LinkedList<>();
+        this.caminoMasLargo=new ArrayList<>();
     }
 
     public void recorridoDepthFirstSearch(GrafoDirigido<Integer> grafo){//recorrido en profundidad
@@ -97,9 +100,12 @@ public class Recorrido implements Iterable<Integer>{
     private boolean buscarCiclo(GrafoDirigido<Integer> g,int vertice){
         verticesRecorridos.put(vertice,"AMARILLO");
         Iterator<Integer> adyacentes=g.obtenerAdyacentes(vertice);
+        boolean hayCiclo=false;
         while(adyacentes.hasNext()){
             int actual=adyacentes.next();
-            if(verticesRecorridos.get(actual).equals("BLANCO")){
+            if(hayCiclo)
+                return true;
+            else if(verticesRecorridos.get(actual).equals("BLANCO")){
                 return buscarCiclo(g,actual);
             }
             else if(verticesRecorridos.get(actual).equals("AMARILLO")){//si es amarillo quiere decir que es un ancestro mio,ya que todavia no se puso en color negro
@@ -109,6 +115,38 @@ public class Recorrido implements Iterable<Integer>{
         verticesRecorridos.put(vertice,"NEGRO");
         return false;
     }
+
+    /*Ejercicio 4 tp grafos
+    Escribir un algoritmo que, dado un grafo dirigido y dos vértices i, j de este grafo, devuelva el
+    camino simple (sin ciclos) de mayor longitud del vértice i al vértice j. Puede suponerse que el
+    grafo de entrada es acíclico. */
+    public ArrayList<Integer> buscarCaminoMasLargo(GrafoDirigido<Integer> grafo,int origen,int destino){
+        ArrayList<Integer> caminoActual=new ArrayList<>();
+        caminoActual.add(origen);
+        buscarCaminoMasLargo(grafo, caminoActual, origen, destino);
+        return this.caminoMasLargo;
+    }
+
+    private void buscarCaminoMasLargo(GrafoDirigido<Integer> grafo,ArrayList<Integer> caminoActual,int origen,int destino){
+        if(origen==destino){
+            if(caminoActual.size()>caminoMasLargo.size()){
+                caminoMasLargo.clear();
+                caminoMasLargo.addAll(caminoActual);
+            }
+        }
+        else{
+            Iterator<Integer> listaAdyacentes=grafo.obtenerAdyacentes(origen);
+            while(listaAdyacentes.hasNext()){
+                int adyActual=listaAdyacentes.next();
+                if(!caminoActual.contains(adyActual)){
+                    caminoActual.add(adyActual);
+                    buscarCaminoMasLargo(grafo, caminoActual, adyActual, destino);
+                    caminoActual.remove(adyActual);
+                }
+            }
+        }
+    }
+
 
     @Override
     public Iterator<Integer> iterator() {//iterable para mis hash de la clase

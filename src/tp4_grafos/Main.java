@@ -17,6 +17,8 @@ public class Main {
 		g1.agregarArco(3,5,null);
 		g1.agregarArco(5,2,null);
 		g1.agregarArco(4,6,null);
+		g1.agregarArco(5,6,null);
+
 		//g1.agregarArco(6,6,null);
 
 
@@ -41,6 +43,8 @@ public class Main {
 		System.out.println(g1.cantidadArcos());
 		g1.borrarVertice(2);
 		System.out.println(g1.cantidadArcos());
+		System.out.println();
+		System.out.println(recorrido.buscarCaminoMasLargo(g1, 2, 6));
 	}
 
 	public static void imprimirArcos(GrafoDirigido<Float> grafito) {
