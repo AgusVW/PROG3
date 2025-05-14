@@ -21,8 +21,18 @@ public class GrafoDirigido<T> implements Grafo<T>, Iterable<Integer> {
 
 	@Override
 	public void borrarVertice(int verticeId) {//si el vertice esta en la tabla de hash lo borro
-		if(contieneVertice(verticeId))
-			this.vertices.remove(verticeId);
+		if(!contieneVertice(verticeId))//si no tengo el vertice a eliminar retorno
+			return;
+
+		this.vertices.remove(verticeId);//primero remuevo el vertice y por lo tanto todos sus adyacentes
+
+		for(Integer vertice:this){//recorro todos los vertices de la tabla de hash
+			for(Arco<T> arco:vertices.get(vertice)){//recorro los arcos de cada vertice
+				Arco<T> arcoLista=arco;//guardo en variable local para luego eliminar si se necesita
+				if(arcoLista.getVerticeDestino()==verticeId)//si el arcoDestino es igual al vertice que elimine antes lo tengo que borrar
+					vertices.get(vertice).remove(arcoLista);
+			}
+		}
 	}
 
 	@Override
@@ -106,7 +116,7 @@ public class GrafoDirigido<T> implements Grafo<T>, Iterable<Integer> {
 
 	@Override
 	public Iterator<Arco<T>> obtenerArcos() {
-		if (this.vertices.size()==0)//si no tengo arcos retorno null
+		if (this.vertices.isEmpty())//si no tengo arcos retorno null
 			return null;
 
 		LinkedList<Arco<T>> arcosTotales=new LinkedList<>();//creo lista de arcos totales para buscar iterator de todos

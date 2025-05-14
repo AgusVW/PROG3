@@ -36,7 +36,11 @@ public class Main {
 		g2.agregarArco(3,10,null);
 
 		//recorrido.recorridoBreadthFirstSearch(g2);
-		System.out.println(recorrido.hayCiclo(g1));
+		//System.out.println(recorrido.hayCiclo(g1));
+
+		System.out.println(g1.cantidadArcos());
+		g1.borrarVertice(2);
+		System.out.println(g1.cantidadArcos());
 	}
 
 	public static void imprimirArcos(GrafoDirigido<Float> grafito) {
