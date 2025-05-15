@@ -14,9 +14,9 @@ public class Main {
 		g1.agregarVertice(15);
 
 		g1.agregarArco(2,3,null);
-		g1.agregarArco(3,5,null);
+		g1.agregarArco(3,4,null);
 		g1.agregarArco(5,2,null);
-		g1.agregarArco(4,6,null);
+		g1.agregarArco(4,5,null);
 		g1.agregarArco(5,6,null);
 
 		//g1.agregarArco(6,6,null);
@@ -29,31 +29,41 @@ public class Main {
 		g2.agregarVertice(2);
 		g2.agregarVertice(3);
 		g2.agregarVertice(4);
-		g2.agregarVertice(15);
-		g2.agregarVertice(10);
+		g2.agregarVertice(5);
+		g2.agregarVertice(7);
 
-		g2.agregarArco(2,3,null);
 		g2.agregarArco(2,4,null);
-		g2.agregarArco(3,15,null);
-		g2.agregarArco(3,10,null);
+		g2.agregarArco(3,5,null);
+		g2.agregarArco(7,3,null);
+		g2.agregarArco(4,5,null);
 
 		//recorrido.recorridoBreadthFirstSearch(g2);
 		//System.out.println(recorrido.hayCiclo(g1));
 
-		System.out.println(g1.cantidadArcos());
-		g1.borrarVertice(2);
-		System.out.println(g1.cantidadArcos());
+		//System.out.println(g1.cantidadArcos());
+		//g1.borrarVertice(2);
+		//System.out.println(g1.cantidadArcos());
+		imprimirAdyacentes(g1,5);
 		System.out.println();
-		System.out.println(recorrido.buscarCaminoMasLargo(g1, 2, 6));
+		//System.out.println(recorrido.buscarCaminoMasLargo(g1, 2, 5));
+		System.out.println(recorrido.caminosAvertice(g2,2));
 	}
 
-	public static void imprimirArcos(GrafoDirigido<Float> grafito) {
-		Iterator<Arco<Float>> iterator=grafito.obtenerArcos();
+	public static void imprimirArcos(GrafoDirigido<Integer> grafito) {
+		Iterator<Arco<Integer>> iterator=grafito.obtenerArcos();
 		while(iterator.hasNext()){
-			Arco<Float> arco=iterator.next();
+			Arco<Integer> arco=iterator.next();
 			System.out.println(arco + ", ");
 		}
 
+	}
+
+	public static void imprimirAdyacentes(GrafoDirigido<Integer> g,int vertice){
+		Iterator<Integer> it=g.obtenerAdyacentes(vertice);
+		while(it.hasNext()){
+			int ady=it.next();
+			System.out.print(ady+", ");
+		}
 	}
 
 }

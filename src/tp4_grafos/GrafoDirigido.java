@@ -104,7 +104,7 @@ public class GrafoDirigido<T> implements Grafo<T>, Iterable<Integer> {
 	@Override
 	public Iterator<Integer> obtenerAdyacentes(int verticeId) {
 		if(contieneVertice(verticeId)){
-			LinkedList<Arco<T>> listaArcos=this.vertices.get(verticeId);//traigo la lista de arco que tiene Iterator de tipo Arco
+			LinkedList<Arco<T>> listaArcos=(this.vertices.get(verticeId));//traigo la lista de arco que tiene Iterator de tipo Arco
 			LinkedList<Integer> listaAdyacentes=new LinkedList<>();//creo mi lista vacia para meter todos los destino de listaArcos
 			for(Arco<T> arco:listaArcos){
 				listaAdyacentes.add(arco.getVerticeDestino());
