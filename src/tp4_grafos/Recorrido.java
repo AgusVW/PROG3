@@ -6,9 +6,11 @@ import java.util.Iterator;
 
 public class Recorrido{
     private ArrayList<Integer> caminoMasLargo;
+    private ArrayList<Integer> caminoMasCorto;
 
     public Recorrido(){
         this.caminoMasLargo=new ArrayList<>();
+        this.caminoMasCorto=new ArrayList<>();
     }
 
     /*Ejercicio 4 tp grafos
@@ -46,7 +48,7 @@ public class Recorrido{
     Escriba un algoritmo que dado un grafo G y un vértice v de dicho grafo, devuelva una lista
     con todos los vértices a partir de los cuales exista un camino en G que termine en v.*/
 
-    public ArrayList<Integer> caminosAvertice(GrafoDirigido<Integer> g,int destino){
+    public ArrayList<Integer> verticesConCaminoA(GrafoDirigido<Integer> g,int destino){
         ArrayList<Integer> verticesQueLlegan=new ArrayList<>();
         ArrayList<Integer> caminoTemporal=new ArrayList<>();
         for(Integer vertice:g){
@@ -75,6 +77,43 @@ public class Recorrido{
                     caminoTemporal.add(adyActual);
                     buscarCaminosAvertice(g,caminoTemporal,verticesQueLlegan,adyActual,destino);
                     caminoTemporal.remove(Integer.valueOf(adyActual));
+                }
+            }
+        }
+    }
+
+    public ArrayList<Integer> buscarCaminoMasCorto(GrafoDirigido<Integer> g,int origen,int destino){
+        ArrayList<Integer> caminoActual=new ArrayList<>();
+        if(!g.contieneVertice(origen) || !g.contieneVertice(destino)) {
+            return caminoMasCorto;
+        }
+        caminoActual.add(origen);
+        if(g.contieneAdyacenteDirecto(origen,destino)){
+            caminoActual.add(destino);
+            caminoMasCorto.clear();
+            caminoMasCorto.addAll(caminoActual);
+            return caminoMasCorto;
+        }
+
+        buscarCaminoMasCorto(g,caminoActual,origen,destino);
+        return this.caminoMasCorto;
+    }
+
+    private void buscarCaminoMasCorto(GrafoDirigido<Integer> g,ArrayList<Integer> caminoActual,int actual,int destino){
+        if(actual==destino){
+            if(caminoActual.size()<caminoMasCorto.size() || caminoMasCorto.isEmpty()){
+                caminoMasCorto.clear();
+                caminoMasCorto.addAll(caminoActual);
+            }
+        }
+        else{
+            Iterator<Integer> it=g.obtenerAdyacentes(actual);
+            while(it.hasNext()){
+                int adyActual=it.next();
+                if(!caminoActual.contains(adyActual)){
+                    caminoActual.add(adyActual);
+                    buscarCaminoMasCorto(g,caminoActual,adyActual,destino);
+                    caminoActual.remove(Integer.valueOf(adyActual));
                 }
             }
         }

@@ -139,4 +139,10 @@ public class GrafoDirigido<T> implements Grafo<T>, Iterable<Integer> {
 		return this.vertices.keySet().iterator();
 	}
 
+	//metodos propios para grafos
+	public boolean contieneAdyacenteDirecto(int vertice,int adyacenteDirecto) {
+		Arco<Integer> arco=new Arco<>(vertice,adyacenteDirecto,null);
+		return this.vertices.get(vertice).contains(arco);
+	}
+
 }
