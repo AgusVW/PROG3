@@ -1,13 +1,13 @@
 package tp5_backtracking;
 
-public class ValorNatural {
+public class Posicion {
     private int valor;
     private boolean norte;
     private boolean sur;
     private boolean este;
     private boolean oeste;
 
-    public ValorNatural(int valor, boolean norte, boolean sur, boolean este, boolean oeste) {
+    public Posicion(int valor, boolean norte, boolean sur, boolean este, boolean oeste) {
         if(valor<0) {
             throw new IllegalArgumentException("El valor debe ser mayor a 0,numero natural");
         }
@@ -57,4 +57,11 @@ public class ValorNatural {
     public void setOeste(boolean oeste) {
         this.oeste = oeste;
     }
+
+    @Override
+    public String toString() {
+        return "ValorNatural [valor=" + valor + "]";
+    }
+
+    
 }
