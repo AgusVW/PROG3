@@ -118,4 +118,28 @@ public class Recorrido{
             }
         }
     }
+
+    public ArrayList<ArrayList<Integer>> buscarCaminosAlternativosEntreDosVertices(GrafoDirigido g,int origen,int destino){
+        ArrayList<ArrayList<Integer>> caminosAlternativos=new ArrayList<>();
+        ArrayList<Integer> caminoActual=new ArrayList<>();
+        buscarTodosLosCaminos(g,caminoActual,caminosAlternativos,origen,destino);
+        return caminosAlternativos;
+    }
+
+    private void buscarTodosLosCaminos(GrafoDirigido g,ArrayList<Integer> caminoActual,ArrayList<ArrayList<Integer>> caminosAlternativos,int actual,int destino){
+        if(actual==destino){
+            caminosAlternativos.add(caminoActual);
+        }
+        else{
+            Iterator<Integer> it=g.obtenerAdyacentes(actual);
+            while(it.hasNext()){
+                int adyActual=it.next();
+                if(!caminoActual.contains(adyActual)){
+                    caminoActual.add(adyActual);
+                    buscarTodosLosCaminos(g,caminoActual,caminosAlternativos,adyActual,destino);
+                    caminoActual.remove(Integer.valueOf(adyActual));
+                }
+            }
+        }
+    }
 }
