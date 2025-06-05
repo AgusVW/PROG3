@@ -1,3 +1,7 @@
+//System.out.println(System.getProperty("user.dir")); //sirve para encontrar el directorio donde esta parado
+
+git checkout -b feature/nueva-funcionalidad origin/feature/nueva-funcionalidad
+
 🧭 HashMap<K, V> – Métodos principale
 Método | Descripción
 put(K key, V value) | Agrega o reemplaza un valor asociado a una clave.
