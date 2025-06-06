@@ -26,7 +26,7 @@ compute(K, f) | Reemplaza o elimina el valor asociado a la clave con una funció
 
 
 
-🔗 LinkedList<E> – Métodos principales
+🔗 Parcial2024.LinkedList<E> – Métodos principales
 Método | Descripción
 add(E e) | Agrega un elemento al final.
 add(int index, E e) | Inserta en la posición indicada.
