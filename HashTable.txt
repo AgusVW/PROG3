@@ -10,3 +10,9 @@ elementos por default
 //en el caso de hastable que el tamaño default es 11,el factor de carga es 8,
 pero sin embargo el arreglo se agranda size>cuando mi factor de carga por lo tanto cuando 
 inserte el 9 elemento
+
+//para calcular el factor de carga actual para ver cuanto llevo ocupado de mi estructura actualmente en porcentaje
+debo hacer cantidad_elementos_actuales/capacidad_total=factor de carga
+
+//pd---> me indica a partir de cuadno mi factor de carga es >= al pd,entonces mi estructura crecera el doble+1
+y reubicara todos los elementos(rehashing)

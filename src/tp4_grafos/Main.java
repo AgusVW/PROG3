@@ -42,14 +42,31 @@ public class Main {
 		//System.out.println(g1.cantidadArcos());
 		//g1.borrarVertice(2);
 		//System.out.println(g1.cantidadArcos());
-		imprimirAdyacentes(g1,5);
-		System.out.println();
+		//imprimirAdyacentes(g1,5);
+		//System.out.println();
 		//System.out.println(recorrido.buscarCaminoMasLargo(g1, 2, 5));
 		//System.out.println(recorrido.verticesConCaminoA(g2,2));
 
 		//System.out.println(recorrido.buscarCaminoMasCorto(g1,3,4));
 
 		System.out.println();
+
+		GrafoDirigido<Integer> g3=new GrafoDirigido<>();
+		g3.agregarVertice(1);
+		g3.agregarVertice(2);
+		g3.agregarVertice(3);
+		g3.agregarVertice(4);
+		g3.agregarVertice(5);
+
+		g3.agregarArco(1,2,null);
+		g3.agregarArco(2,4,null);
+		g3.agregarArco(4,1,null);
+		g3.agregarArco(1,5,null);
+		g3.agregarArco(5,4,null);
+		g3.agregarArco(4,3,null);
+		g3.agregarArco(3,2,null);
+		g3.agregarArco(2,1,null);
+		System.out.println(recorrido.buscarCicloMasLargoEnGrafo(g3));
 
 	}
 

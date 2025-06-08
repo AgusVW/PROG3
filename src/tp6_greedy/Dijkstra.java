@@ -2,17 +2,14 @@ package tp6_greedy;
 
 import tp4_grafos.GrafoDirigido;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class Dijkstra {
-    private HashMap<Integer,Integer> distancias;
-    private HashMap<Integer,Integer> padres;
+    private Map<Integer,Integer> distancias;
+    private Map<Integer,Integer> padres;
     private Set<Integer> S;
 
-    public Dijkstra(GrafoDirigido<Integer> G,int origen){
+    public Map<Integer,Integer> Dijkstra(GrafoDirigido<Integer> G,int origen){
         distancias=new HashMap<>();//arranco arreglo de distancias
         padres=new HashMap<>();//arranco arreglo de padres
         for(Integer vertice:G){
@@ -43,6 +40,8 @@ public class Dijkstra {
                 }
             }
         }
+
+        return padres;
     }
 
     public int obtenerVerticeDeMinimaDistancia(GrafoDirigido<Integer> grafo){
