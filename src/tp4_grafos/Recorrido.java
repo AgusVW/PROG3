@@ -142,4 +142,21 @@ public class Recorrido{
             }
         }
     }
+
+    /*public void buscarCicloMasLargo(ArrayList<Integer> caminoActual,int origen,int actual){
+        if(origen==actual && caminoActual.size()>1){
+            if(caminoActual.size()>caminoMasLargo.size()){
+                caminoMasLargo.clear();
+                caminoMasLargo.addAll(caminoActual);
+            }
+        }else{
+            Iterator it=grafo.obtenerAdyacentes(actual);
+            while(it.hasNext()){
+                Integer adyActual=(Integer)it.next();
+                caminoActual.add(adyActual);
+                buscarCicloMasLargo(caminoActual,origen,adyActual);
+                caminoActual.removeLast();
+            }
+        }
+    }*///parcial 2023 ejercicio 4
 }

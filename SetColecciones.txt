@@ -1,0 +1,28 @@
+//SET
+
+-Un Set es una colección que no permite elementos duplicados. Es parte del framework de colecciones de Java.
+
+-No acepta null más de una vez (excepto algunos tipos como HashSet)
+
+-No mantiene orden (a menos que uses versiones ordenadas como TreeSet o LinkedHashSet)
+
+-Es útil cuando querés verificar pertenencia o mantener elementos únicos
+
+-NO TIENE METODO GET,se utiliza para llevar alguna unidad donde llevo algo visitado,etc
+
+-NO TIENE VALOR COMO EL HASHMAP,SOLAMENTE SU CLAVE;COSTO ----> O(1)
+
+
+//METODOS
+
+add(e)	Agrega el elemento e si no existe
+remove(e)	Elimina el elemento si existe
+contains(e)	Devuelve true si el elemento está presente
+isEmpty()	true si el set está vacío
+size()	Cantidad de elementos
+clear()	Elimina todos los elementos
+iterator()	Devuelve un Iterator para recorrer los elementos
+forEach(...)	Recorre con una lambda
+addAll(c)	Agrega todos los elementos del conjunto c (sin duplicados)
+retainAll(c)	Mantiene solo los elementos que también están en c
+removeAll(c)	Elimina todos los elementos que están en c
