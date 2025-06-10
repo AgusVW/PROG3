@@ -64,7 +64,8 @@ public class DFS implements Iterable<Integer>{
             int actual=adyacentes.next();
             if(hayCiclo)
                 return true;
-            else if(verticesRecorridos.get(actual).equals("BLANCO")){
+
+            if(verticesRecorridos.get(actual).equals("BLANCO")){
                 return buscarCiclo(g,actual);
             }
             else if(verticesRecorridos.get(actual).equals("AMARILLO")){//si es amarillo quiere decir que es un ancestro mio,ya que todavia no se puso en color negro

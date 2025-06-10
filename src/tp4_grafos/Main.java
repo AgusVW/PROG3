@@ -22,6 +22,7 @@ public class Main {
 
 
 		Recorrido recorrido=new Recorrido();
+		DFS dfs=new DFS();
 		//recorrido.recorridoDepthFirstSearch(g1);
 
 		GrafoDirigido<Integer> g2=new GrafoDirigido<>();
@@ -66,7 +67,8 @@ public class Main {
 		g3.agregarArco(4,3,null);
 		g3.agregarArco(3,2,null);
 		g3.agregarArco(2,1,null);
-		System.out.println(recorrido.buscarCicloMasLargoEnGrafo(g3));
+		//System.out.println(recorrido.buscarCicloMasLargoEnGrafo(g3));
+		System.out.println(dfs.hayCiclo(g3));
 
 	}
 
